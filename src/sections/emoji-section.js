@@ -3,11 +3,8 @@ import { observer } from "mobx-react-lite";
 import { InputGroup } from "@blueprintjs/core";
 import { isAlive } from "mobx-state-tree";
 
-// import { useInfiniteAPI } from "polotno/utils/use-api";
-import { urlToBase64, svgToURL } from "polotno/utils/svg";
+import { urlToBase64 } from "polotno/utils/svg";
 import { SectionTab } from "polotno/side-panel";
-// import { getKey } from "polotno/utils/validate-key";
-// import { getImageSize } from "polotno/utils/image";
 import EnEmojiHappy from "@meronex/icons/en/EnEmojiHappy";
 
 import { ImagesGrid } from "polotno/side-panel/images-grid";
