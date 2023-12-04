@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
 import { Toolbar } from "polotno/toolbar/toolbar";
 import { ZoomButtons } from "polotno/toolbar/zoom-buttons";
-import { SidePanel, DEFAULT_SECTIONS } from "polotno/side-panel";
+import { DEFAULT_SECTIONS, SidePanel } from "polotno/side-panel";
 import { Workspace } from "polotno/canvas/workspace";
 import { Tooltip } from "polotno/canvas/tooltip";
 
@@ -11,9 +11,6 @@ import { loadFile } from "./file";
 
 import { IconsSection } from "./sections/icons-section";
 import { ShapesSection } from "./sections/shapes-section";
-import { useProject } from "./project";
-
-import { ImageRemoveBackground } from "./background-remover";
 
 import Topbar from "./topbar/topbar";
 
@@ -31,15 +28,7 @@ const useHeight = () => {
 };
 
 const App = observer(({ store }) => {
-	const project = useProject();
 	const height = useHeight();
-
-	const load = () => {
-		let url = new URL(window.location.href);
-		const reg = new RegExp("design/([a-zA-Z0-9_-]+)").exec(url.pathname);
-		const designId = (reg && reg[1]) || "local";
-		project.loadById(designId);
-	};
 
 	const handleDrop = (ev) => {
 		ev.preventDefault();
@@ -67,12 +56,7 @@ const App = observer(({ store }) => {
 						<SidePanel store={store} sections={DEFAULT_SECTIONS} />
 					</SidePanelWrap>
 					<WorkspaceWrap>
-						<Toolbar
-							store={store}
-							components={{
-								ImageRemoveBackground,
-							}}
-						/>
+						<Toolbar store={store} />
 						<Workspace store={store} components={{ Tooltip }} />
 						<ZoomButtons store={store} />
 					</WorkspaceWrap>

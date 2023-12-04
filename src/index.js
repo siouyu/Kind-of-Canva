@@ -8,7 +8,7 @@ import { createProject, ProjectContext } from "./project";
 
 import "./index.css";
 import App from "./App";
-import "./logger";
+import "./errorTracking";
 import { ErrorBoundary } from "react-error-boundary";
 
 unstable_setAnimationsEnabled(true);

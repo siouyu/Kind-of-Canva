@@ -3,6 +3,7 @@
 	"version": "0.1.1",
 	"description": "Free design editor",
 	"private": true,
+	"homepage": "https://github.com/siouyu.github.io/Kind-of-Canva",
 	"dependencies": {
 		"@auth0/auth0-react": "^2.2.1",
 		"@meronex/icons": "^4.0.0",
@@ -10,6 +11,7 @@
 		"@sentry/tracing": "^7.74.0",
 		"@stripe/react-stripe-js": "^2.3.1",
 		"@stripe/stripe-js": "^2.1.7",
+		"gh-pages": "^6.1.0",
 		"jszip": "^3.10.1",
 		"localforage": "^1.10.0",
 		"node": "^21.2.0",
@@ -24,7 +26,9 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test"
+		"test": "react-scripts test",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
 		"extends": "react-app"

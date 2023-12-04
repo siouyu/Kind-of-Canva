@@ -1,6 +1,6 @@
 import * as mobx from "mobx";
 import { createContext, useContext } from "react";
-import * as api from "./api";
+import * as storage from "./localStorage";
 
 export const ProjectContext = createContext({});
 
@@ -38,7 +38,7 @@ class Project {
 		this.id = id;
 		this.updateUrlWithProjectId();
 		try {
-			const { store, name } = await api.getDesignById({
+			const { store, name } = await storage.getDesignById({
 				id,
 				authToken: this.authToken,
 			});
@@ -64,8 +64,7 @@ class Project {
 
 	async save() {
 		const json = this.store.toJSON();
-		const maxWidth = 400;
-		const res = await api.saveDesign({
+		const res = await storage.saveDesign({
 			store: json,
 			id: this.id,
 			isPrivate: this.private,
@@ -84,7 +83,7 @@ class Project {
 	}
 
 	async clear() {
-		await api.deleteDesign();
+		await storage.deleteDesign();
 	}
 }
 

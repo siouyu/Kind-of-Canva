@@ -3,8 +3,6 @@ import { observer } from "mobx-react-lite";
 import { Navbar, Alignment, NavbarDivider } from "@blueprintjs/core";
 import styled from "polotno/utils/styled";
 
-import { useProject } from "../project";
-
 import { DownloadButton } from "./download-button";
 
 const boldText = {
@@ -27,8 +25,6 @@ const NavInner = styled("div")`
 `;
 
 export default observer(({ store }) => {
-	const project = useProject();
-
 	return (
 		<NavbarContainer className="bp5-navbar">
 			<NavInner>
