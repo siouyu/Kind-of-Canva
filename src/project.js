@@ -1,6 +1,6 @@
 import * as mobx from "mobx";
 import { createContext, useContext } from "react";
-import * as storage from "./localStorage";
+import * as storage from "./projectStorage";
 
 export const ProjectContext = createContext({});
 
@@ -34,34 +34,6 @@ class Project {
 		}, 5000);
 	}
 
-	async loadById(id) {
-		this.id = id;
-		this.updateUrlWithProjectId();
-		try {
-			const { store, name } = await storage.getDesignById({
-				id,
-				authToken: this.authToken,
-			});
-			if (store) {
-				this.store.loadJSON(store);
-			}
-			this.name = name;
-		} catch (e) {
-			alert("Project can't be loaded");
-		}
-	}
-
-	updateUrlWithProjectId() {
-		if (!this.id || this.id === "local") {
-			window.history.replaceState({}, null, `/`);
-			return;
-		}
-		let url = new URL(window.location.href);
-		let params = new URLSearchParams(url.search);
-		params.set("id", this.id);
-		window.history.replaceState({}, null, `/design/${this.id}`);
-	}
-
 	async save() {
 		const json = this.store.toJSON();
 		const res = await storage.saveDesign({
@@ -73,7 +45,6 @@ class Project {
 		});
 		if (res.status === "saved") {
 			this.id = res.id;
-			this.updateUrlWithProjectId();
 		}
 	}
 

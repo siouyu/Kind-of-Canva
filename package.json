@@ -5,6 +5,7 @@
 	"private": true,
 	"dependencies": {
 		"@auth0/auth0-react": "^2.2.1",
+		"@blueprintjs/core": "^5.7.2",
 		"@meronex/icons": "^4.0.0",
 		"@sentry/browser": "^7.74.0",
 		"@sentry/tracing": "^7.74.0",
