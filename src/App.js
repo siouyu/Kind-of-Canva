@@ -30,33 +30,33 @@ const useHeight = () => {
 const App = observer(({ store }) => {
 	const height = useHeight();
 
-	const checkPageNumbers = () => {
-		store.pages.forEach((page, index) => {
-			let pageNumber = page.children.find(
-				(el) => el.custom?.name === "page-number"
-			);
-			const text = `Page ${index + 1}`;
-			if (pageNumber) {
-				pageNumber.set({ text });
-			} else {
-				page.addElement({
-					type: "text",
-					custom: { name: "page-number" },
-					text,
-					width: store.width,
-					align: "center",
-					fontSize: 30,
-					x: 0,
-					y: store.height - 50,
-					selectable: false,
-					alwaysOnTop: true,
-				});
-			}
-		});
-	};
+	// const checkPageNumbers = () => {
+	// 	store.pages.forEach((page, index) => {
+	// 		let pageNumber = page.children.find(
+	// 			(el) => el.custom?.name === "page-number"
+	// 		);
+	// 		const text = `Page ${index + 1}`;
+	// 		if (pageNumber) {
+	// 			pageNumber.set({ text });
+	// 		} else {
+	// 			page.addElement({
+	// 				type: "text",
+	// 				custom: { name: "page-number" },
+	// 				text,
+	// 				width: store.width,
+	// 				align: "center",
+	// 				fontSize: 30,
+	// 				x: 0,
+	// 				y: store.height - 50,
+	// 				selectable: false,
+	// 				alwaysOnTop: true,
+	// 			});
+	// 		}
+	// 	});
+	// };
 
-	checkPageNumbers();
-	store.on("change", checkPageNumbers);
+	// checkPageNumbers();
+	// store.on("change", checkPageNumbers);
 
 	const handleDrop = (ev) => {
 		ev.preventDefault();
